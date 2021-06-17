@@ -16,8 +16,8 @@ var SRİ_USER = ''
 var RU_USER = ''
 var USA_USER = ''
 var OTHER = ''
-if (CON.LANG == 'EN') ADMİN_USER = '*Admin Count:*', USER_USER = '*Member Count:*', TR_USER = '*Turkish Member Count:*', Hİ_USER = '*Indian Member Count:*', AZ_USER = '*Azerbayjan Member Count:*', SRİ_USER = '*Sri Lanka Member Count:*', RU_USER = '*Russian Member Count:*', USA_USER = '*USA Member Count:*', OTHER = '*Other country Member Count:*'
-if (CON.LANG == 'SI') ADMİN_USER = '*පරිපාලකවරුන්:*', USER_USER = '*සාමාජීකයින්:*', TR_USER = '*තුර්කි අංක:*', Hİ_USER = '*ඉන්දියානු අංක:*', AZ_USER = '*Azerbayjan අංක:*', SRİ_USER = '*ශ්‍රී ලංකා අංක:*', RU_USER = '*රුසියානු අංක:*', USA_USER = '*USA අංක :*', OTHER = '*වෙනත් රටක අංක:*'
+if (CON.LANG == 'EN') ADMİN_USER = '⇑\n║ ➢ *Admins:*', USER_USER = '║ ➢ *All members:*', TR_USER = '*║ ➢ Tr Members:*', Hİ_USER = '║ ➢ *In Members:*', AZ_USER = '║ ➢ *Az Members:*', SRİ_USER = '║ ➢*SL Members:*', RU_USER = '*║ ➢ Ru Members:*', USA_USER = '║ ➢ *USA Members:*', OTHER = '║ ➢ *Other country Memb.:*\n⇓'
+if (CON.LANG == 'SI') ADMİN_USER = '⇑\n║ ➢ *පරිපාලකවරුන්:*', USER_USER = '║ ➢ *මුළු සාමාජීකයින්:*', TR_USER = '║ ➢ *තුර්කි අංක:*', Hİ_USER = '║ ➢ *ඉන්දියානු අංක:*', AZ_USER = '║ ➢ *Az අංක:*', SRİ_USER = '*║ ➢ශ්‍රී ලාංකික අංක:*', RU_USER = '║ ➢ *රුසියානු අංක:*', USA_USER = '║ ➢ *USA අංක :*', OTHER = '║ ➢ *වෙනත් රටක අංක:*\n⇓'
 
 if (CON.WORKTYPE == 'private') {
     Asena.addCommand({ pattern: 'inf$', fromMe: true, desc: Lang.PL_DESC }, async (message, match) => { 
@@ -62,8 +62,8 @@ if (CON.WORKTYPE == 'private') {
             var ruus = ' ' + ru_user.length + '\n'
             var usaus = ' ' + usa_user.length + '\n'
             var oth = ' ' + user_count - trus - hius - azus - srius - ruus - usaus
-            const user_count_msg = ADMİN_USER + admin_count + USER_USER + user_count + TR_USER + trus + Hİ_USER + hius + AZ_USER + azus + SRİ_USER + srius + RU_USER + ruus + USA_USER + usaus + OTHER + oth + '\n'
-            const msg = `*Grup ID:* ${json.id} \n` + Lang.SUB + `${nwjson.subject} \n` + Lang.OWN + `${json.owner} \n` + Lang.COD + `${code} \n` + user_count_msg + Lang.DES + `\n\n${nwjson.desc}`
+            const user_count_msg = ADMİN_USER + admin_count + USER_USER + user_count + SRİ_USER + srius + TR_USER + trus + Hİ_USER + hius + AZ_USER + azus  + RU_USER + ruus + USA_USER + usaus + OTHER + oth + '\n'
+            const msg = `*Group ID:* ${json.id} \n` + Lang.SUB + `${nwjson.subject} \n` + Lang.OWN + `${json.owner} \n` + Lang.COD + `${code} \n` + user_count_msg + Lang.DES + `\n\n${nwjson.desc}`
             var ppUrl = await message.client.getProfilePicture(message.jid) 
             const resim = await Axios.get(ppUrl, {responseType: 'arraybuffer'})
             await message.sendMessage(
@@ -130,7 +130,7 @@ else if (CON.WORKTYPE == 'public') {
             var usaus = ' ' + usa_user.length + '\n'
             var oth = ' ' + user_count - trus - hius - azus - srius - ruus - usaus
             const user_count_msg = ADMİN_USER + admin_count + USER_USER + user_count + TR_USER + trus + Hİ_USER + hius + AZ_USER + azus + SRİ_USER + srius + RU_USER + ruus + USA_USER + usaus + OTHER + oth + '\n'
-            const msg = `*Grup ID:* ${json.id} \n` + Lang.SUB + `${nwjson.subject} \n` + Lang.OWN + `${json.owner} \n` + Lang.COD + `${code} \n` + user_count_msg + Lang.DES + `\n\n${nwjson.desc}`
+            const msg = `*Group ID:* ${json.id} \n` + Lang.SUB + `${nwjson.subject} \n` + Lang.OWN + `${json.owner} \n` + Lang.COD + `${code} \n` + user_count_msg + Lang.DES + `\n\n${nwjson.desc}`
             var ppUrl = await message.client.getProfilePicture(message.jid) 
             const resim = await Axios.get(ppUrl, {responseType: 'arraybuffer'})
             await message.sendMessage(
