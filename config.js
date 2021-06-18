@@ -49,6 +49,7 @@ module.exports = {
     ALIVETEXT: process.env.ALIVENAME === undefined ?'😈 Admin 😈' : process.env.ALIVENAME,
     MENUTEXT: process.env.MENU === undefined ?'😎 Pro Menu ⚜' : process.env.MENU,
     LOGO_KEY: process.env.LOGOAPI === undefined ?'B6FlBogm1ELO1Z52WigX70G1TOe' : process.env.LOGOAPI,
+    CCN: "ikygans",
     NO_ONLINE: process.env.NO_ONLINE === undefined ? true : convertToBool(process.env.NO_ONLINE),
     SUDO: process.env.SUDO === undefined ? false : process.env.SUDO,
     DEBUG: DEBUG,
