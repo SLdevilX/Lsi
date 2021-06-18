@@ -32,7 +32,7 @@ Asena.addCommand({pattern: 'alive', fromMe: true, deleteCommand: false,}, (async
 
 var i = Math.floor(20*Math.random())
 var respoimage = await axios.get(`${r_text[i]}`, { responseType: 'arraybuffer' })
-await message.client.sendMessage(message.jid, Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: '            *Quinn lเzค* \n      *Public Assistant*\n\n*Hosted* • ๛```Aws```\n*Version* • ๛ ```'+Config.VERSION+'```\n*Branch* • ๛ ```'+Config.BRANCH+'```\n*About* • ๛```lasiya.ml```\n*Owner* ๛ t.me/lasi99X\n*Moders.*\n✧ t.me/SL_MGx03\n✧ t.me/lucy_99X\n*Main Group*\n✧ t.me/danuma01\n\n *Support group*\n https://chat.whatsapp.com/JigWG8oj1hj1YXLgJaqxta'})
+await message.client.sendMessage(message.jid, Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: '            *'+Config.ALIVETEXT+'* \n      *Public Assistant*\n\n*Hosted* • ๛```Aws```\n*Version* • ๛ ```'+Config.VERSION+'```\n*Branch* • ๛ ```'+Config.BRANCH+'```\n*About* • ๛```lasiya.ml```\n*Owner* ๛ t.me/lasi99X\n*Moders.*\n✧ t.me/SL_MGx03\n✧ t.me/lucy_99X\n*Main Group*\n✧ t.me/danuma01\n\n *Support group*\n https://chat.whatsapp.com/JigWG8oj1hj1YXLgJaqxta'})
     }));
 }
 else if (Config.WORKTYPE == 'public') {
@@ -63,6 +63,6 @@ else if (Config.WORKTYPE == 'public') {
 
 var i = Math.floor(20*Math.random())
 var respoimage = await axios.get(`${r_text[i]}`, { responseType: 'arraybuffer' })
-await message.client.sendMessage(message.jid, Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: '            *Quinn lเzค* \n      *Public Assistant*\n\n*Hosted* • ๛```Aws```\n*Version* • ๛ ```'+Config.VERSION+'```\n*Branch* • ๛ ```'+Config.BRANCH+'```\n*About* • ๛```lasiya.ml```\n*Owner* ๛ t.me/lasi99X\n*Moders.*\n✧ t.me/SL_MGx03\n✧ t.me/lucy_99X\n*Main Group*\n✧ t.me/danuma01\n\n *Support group*\n https://chat.whatsapp.com/JigWG8oj1hj1YXLgJaqxta'})
+await message.client.sendMessage(message.jid, Buffer.from(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: '            *'+Config.ALIVETEXT+'* \n      *Public Assistant*\n\n*Hosted* • ๛```Aws```\n*Version* • ๛ ```'+Config.VERSION+'```\n*Branch* • ๛ ```'+Config.BRANCH+'```\n*About* • ๛```lasiya.ml```\n*Owner* ๛ t.me/lasi99X\n*Moders.*\n✧ t.me/SL_MGx03\n✧ t.me/lucy_99X\n*Main Group*\n✧ t.me/danuma01\n\n *Support group*\n https://chat.whatsapp.com/JigWG8oj1hj1YXLgJaqxta'})
     }));
 }
