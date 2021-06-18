@@ -7,6 +7,7 @@ const {execFile} = require('child_process');
 const CON = require('../config');
 const Language = require('../language'); 
 const Lang = Language.getString('whois');
+const DD = " *Group Description:* "
 var ADMİN_USER = ''
 var USER_USER = ''
 var TR_USER = ''
@@ -63,7 +64,7 @@ if (CON.WORKTYPE == 'private') {
             var usaus = ' ' + usa_user.length + '\n'
             var oth = ' ' + user_count - trus - hius - azus - srius - ruus - usaus
             const user_count_msg = ADMİN_USER + admin_count + USER_USER + user_count + SRİ_USER + srius + TR_USER + trus + Hİ_USER + hius + AZ_USER + azus  + RU_USER + ruus + USA_USER + usaus + OTHER + oth + '\n✪ '
-            const msg = `*Group ID:* ${json.id} \n` + Lang.SUB + `${nwjson.subject} \n` + Lang.OWN + `${json.owner} \n` + Lang.COD + `${code} \n` + user_count_msg + Lang.DES + `\n\n${nwjson.desc}`
+            const msg = `*Group ID:* ${json.id} \n` + Lang.SUB + `${nwjson.subject} \n` + Lang.OWN + `${json.owner} \n` + Lang.COD + `${code} \n` + user_count_msg + DD + `\n\n${nwjson.desc}`
             var ppUrl = await message.client.getProfilePicture(message.jid) 
             const resim = await Axios.get(ppUrl, {responseType: 'arraybuffer'})
             await message.sendMessage(
@@ -130,7 +131,7 @@ else if (CON.WORKTYPE == 'public') {
             var usaus = ' ' + usa_user.length + '\n'
             var oth = ' ' + user_count - trus - hius - azus - srius - ruus - usaus
             const user_count_msg = ADMİN_USER + admin_count + USER_USER + user_count + TR_USER + trus + Hİ_USER + hius + AZ_USER + azus + SRİ_USER + srius + RU_USER + ruus + USA_USER + usaus + OTHER + oth + '\n✪ '
-            const msg = `*Group ID:* ${json.id} \n` + Lang.SUB + `${nwjson.subject} \n` + Lang.OWN + `${json.owner} \n` + Lang.COD + `${code} \n` + user_count_msg + Lang.DES + `\n\n${nwjson.desc}`
+            const msg = `*Group ID:* ${json.id} \n` + Lang.SUB + `${nwjson.subject} \n` + Lang.OWN + `${json.owner} \n` + Lang.COD + `${code} \n` + user_count_msg + DD + `\n\n${nwjson.desc}`
             var ppUrl = await message.client.getProfilePicture(message.jid) 
             const resim = await Axios.get(ppUrl, {responseType: 'arraybuffer'})
             await message.sendMessage(
