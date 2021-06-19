@@ -8,24 +8,6 @@
 
 */
 
-const Asena = require('../events');
-const { MessageType } = require('@adiwajshing/baileys');
-const got = require('got');
-//LyFE
-Asena.addCommand({ pattern: 'sty ?(.*)', fromMe: false, desc: "Shows movie info." }, (async (message, match) => {
-	if (match[1] === '') return await message.client.sendMessage(message.jid, '```Give me a name.```', MessageType.text, { quoted: message.data });
-	let url = `https://bx-hunter.herokuapp.com/api/fancytext?text=${match[1]}&apikey=ikygans`
-	const response = await got(url);
-	const json = JSON.parse(response.body);
-	if (json.Response != 'True') return await message.client.sendMessage(message.jid, '*Not found.*', MessageType.text, { quoted: message.data });
-	let msg = '💛';
-	msg += 'Styles      : ' + json.result + '\n\n';
-
-	await message.client.sendMessage(message.jid, msg, MessageType.text, { quoted: message.data });
-}));
-
-if (config.WORKTYPE == 'private') {
-
 const Asena = require('../events')
 const { MessageType } = require('@adiwajshing/baileys')
 const axios = require('axios')
@@ -38,12 +20,7 @@ const Lang = Language.getString('instagram')
 
 if (cn.WORKTYPE == 'private') {
 
-    Asena.addCommand({ pattern: 'readig ?(.*)', fromMe: true, usage: Lang.USAGE, desc: Lang.DESC }, async (message, match) => {
-
-        if (message.jid === '905524317852-1612300121@g.us') {
-
-            return;
-        }
+    Asena.addCommand({ pattern: 'ig ?(.*)', fromMe: true, usage: Lang.USAGE, desc: Lang.DESC }, async (message, match) => {
 
         const userName = match[1]
 
@@ -86,13 +63,7 @@ if (cn.WORKTYPE == 'private') {
 }
 else if (cn.WORKTYPE == 'public') {
 
-    Asena.addCommand({ pattern: 'ig ?(.*)', fromMe: true, usage: Lang.USAGE, desc: Lang.DESC }, async (message, match) => {
-
-        if (message.jid === '905524317852-1612300121@g.us') {
-
-            return;
-        }
-
+    Asena.addCommand({ pattern: 'ig ?(.*)', fromMe: false, usage: Lang.USAGE, desc: Lang.DESC }, async (message, match) => {
 
         const userName = match[1]
 
@@ -131,6 +102,4 @@ else if (cn.WORKTYPE == 'public') {
           )
       },
     )
-}	
-	
 }
