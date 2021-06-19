@@ -79,16 +79,6 @@ if (Config.WORKTYPE == 'private') {
         await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.png })
 
     }));   
-                Asena.addCommand({ pattern: 'waifu ?(.*)', fromMe: true, desc: ANIM }, (async (message, match) => {
-
-        if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
-                var XX = match[1]
-     var ttinullimage = await axios.get(`https://bx-${Config.ON}.herokuapp.com/api/sfw/waifu?apikey=${Config.CCN}`, { responseType: 'arraybuffer' })
-
-
-        await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.png })
-
-    }));
 
 
 }
@@ -160,16 +150,4 @@ else if (Config.WORKTYPE == 'public') {
 
     }));
 
-                Asena.addCommand({ pattern: 'waifu ?(.*)', fromMe: false, desc: ANIM }, (async (message, match) => {
-
-        if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
-                var XX = match[1]
-     var ttinullimage = await axios.get(`https://bx-${Config.ON}.herokuapp.com/api/sfw/waifu?apikey=${Config.CCN}`, { responseType: 'arraybuffer' })
-
-
-        await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.png })
-
-    }));
-    
-    
 }
