@@ -1,6 +1,6 @@
 /* 
 lasi
-*/
+
 
 import { textpro, photooxy } from 'textmaker-lasi'; // Import NPM Package
 
@@ -747,3 +747,4 @@ addCommand({pattern: 'textcup ?(.*)', fromMe: wk, dontAddCommandList: true}, (as
           } 
     });
 }));
+*/
