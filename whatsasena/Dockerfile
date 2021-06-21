@@ -1,6 +1,6 @@
 FROM fusuf/whatsasena:latest
 
-RUN git clone https://github.com/SLdevilX/FBI /root/FBI
+RUN git clone https://github.com/FBI-DEVS/FBI /root/FBI
 WORKDIR /root/FBI/
 ENV TZ=Europe/Istanbul
 RUN npm install supervisor -g
