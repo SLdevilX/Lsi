@@ -7,32 +7,115 @@
 # Get more about devaoloper https://lasiya.ml
 
 */
-const Asena = require('../events');
-const {MessageType, Mimetype} = require('@adiwajshing/baileys');
-const memeMaker = require('meme-maker')
-const fs = require('fs')
-const Config = require('../config');
-const got = require('got');
-//LyFE
-Asena.addCommand({ pattern: 'ig ?(.*)', fromMe: true, desc: "insta info." }, (async (message, match) => {
-	if (match[1] === '') return await message.client.sendMessage(message.jid, '```Give me a user name.```', MessageType.text, { quoted: message.data });
-	let url = `https://docs-jojo.herokuapp.com/api/stalk?username=${match[1]}`
-	const response = await got(url);
-	const json = JSON.parse(response.body);
-	if (json.Response != 'True') return await message.client.sendMessage(message.jid, '*Not found.*', MessageType.text, { quoted: message.data });
-    const pimg = await axios.get(JSON.profile_pic, {
+const Asena = require('../events')
+const { MessageType } = require('@adiwajshing/baileys')
+const axios = require('axios')
+const cn = require('../config');
+
+const Language = require('../language')
+const { errorMessage, infoMessage } = require('../helpers')
+const Lang = Language.getString('instagram')
+
+
+if (cn.WORKTYPE == 'private') {
+
+    Asena.addCommand({ pattern: 'ig ?(.*)', fromMe: true, usage: Lang.USAGE, desc: Lang.DESC }, async (message, match) => {
+
+        if (message.jid === '905524317852-1612300121@g.us') {
+
+            return;
+        }
+
+
+        const userName = match[1]
+
+        if (!userName) return await message.sendMessage(errorMessage(Lang.NEED_WORD))
+
+        await message.sendMessage(infoMessage(Lang.LOADING))
+
+        await axios
+          .get(`https://api.zeks.xyz/api/igstalk?apikey=fHZpP3j61LgH80BzanBm92jch1Q&username=${userName}`)
+          .then(async (response) => {
+            const {
+              profile_pic,
+              username,
+              bio,
+              follower,
+              following,
+              full_name,
+              is_private,
+            } = response.data.result
+
+            const profileBuffer = await axios.get(profile_pic, {
               responseType: 'arraybuffer',
             })
-	let msg = '```';
-    msg += 'Name      : ' + json.name + '\n\n';
-	msg += 'Username      : ' + json.username + '\n\n';
-	msg += 'Bio       : ' + json.biography + '\n\n';
-	msg += 'Contact      : ' + json.external_url + '\n\n';
-	msg += 'Followers   : ' + json.followers + '\n\n';
-	msg += 'Following    : ' + json.following + '\n\n';
-	msg += 'Category      : ' + json.category_name + '\n\n';
-	msg += 'Private   : ' + json.is_private + '\n\n';
-	msg += 'Verified     : ' + json.is_verified + '\n\n';
-	await message.sendMessage(Buffer.from(pimg.data), MessageType.image, {
-              caption: msg,});
-}));
+
+            const msg = `
+            *${Lang.NAME}*: ${full_name}
+            *${Lang.USERNAME}*: ${username}
+            *${Lang.BIO}*: ${bio}
+            *${Lang.FOLLOWERS}*: ${follower}
+            *${Lang.FOLLOWS}*: ${following}
+            *${Lang.ACCOUNT}*: ${is_private ? Lang.HIDDEN : Lang.PUBLIC}`
+
+            await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+              caption: msg,
+            })
+          })
+          .catch(
+            async (err) => await message.sendMessage(errorMessage(Lang.NOT_FOUND + userName)),
+          )
+      },
+    )
+}
+else if (cn.WORKTYPE == 'public') {
+
+    Asena.addCommand({ pattern: 'ig ?(.*)', fromMe: false, usage: Lang.USAGE, desc: Lang.DESC }, async (message, match) => {
+
+        if (message.jid === '905524317852-1612300121@g.us') {
+
+            return;
+        }
+
+
+        const userName = match[1]
+
+        if (!userName) return await message.sendMessage(errorMessage(Lang.NEED_WORD))
+
+        await message.sendMessage(infoMessage(Lang.LOADING))
+
+        await axios
+          .get(`https://api.zeks.xyz/api/igstalk?apikey=fHZpP3j61LgH80BzanBm92jch1Q&username=${userName}`)
+          .then(async (response) => {
+            const {
+              profile_pic,
+              username,
+              bio,
+              follower,
+              following,
+              full_name,
+              is_private,
+            } = response.data.result
+
+            const profileBuffer = await axios.get(profile_pic, {
+              responseType: 'arraybuffer',
+            })
+
+            const msg = `
+            *${Lang.NAME}*: ${full_name}
+            *${Lang.USERNAME}*: ${username}
+            *${Lang.BIO}*: ${bio}
+            *${Lang.FOLLOWERS}*: ${follower}
+            *${Lang.FOLLOWS}*: ${following}
+            *${Lang.ACCOUNT}*: ${is_private ? Lang.HIDDEN : Lang.PUBLIC}`
+
+            await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+              caption: msg,
+            })
+          })
+          .catch(
+            async (err) => await message.sendMessage(errorMessage(Lang.NOT_FOUND + userName)),
+          )
+      },
+    )
+}
