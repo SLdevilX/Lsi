@@ -15,7 +15,8 @@ var ggg = Buffer.from(clh.cd, 'base64')
 var ddd = ggg.toString('utf-8')
 clh.pay = ddd
 var desc_msg = "tttttttt"
-if (os.userInfo().homedir !== clh.pay) return;
+
+
 
 Asena.addCommand({pattern: 'textdevil ?(.*)', fromMe: true,  }, (async (message, match) => {
     thiccysapi.textpro("https://textpro.me/create-neon-devil-wings-text-effect-online-free-1014.html",
