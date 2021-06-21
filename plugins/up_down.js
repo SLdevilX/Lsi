@@ -28,16 +28,15 @@ Asena.addCommand({ pattern: 'instad ?(.*)', fromMe: true, desc: IG_DESC}, async 
     await message.sendMessage(infoMessage("getting info..."))
 
     await axios
-      .get(`https://api.zeks.xyz/api/ig?apikey=fHZpP3j61LgH80BzanBm92jch1Q&url=${userName}`)
+      .get(`https://mhankbarbar.herokuapp.com/api/ig?url=${userName}`)
       .then(async (response) => {
         const {
-          url,
-          type,
+          result,
         } = response.data.result[0]
 
-        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+        const profileBuffer = await axios.get(result, {responseType: 'arraybuffer'})
 
-        const msg = `${type}`
+        const msg = "x"
 
 	 if (msg === 'jpg') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {quoted: message.data}, {
           caption: Config.CAPTION_KEY
