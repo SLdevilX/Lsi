@@ -1,5 +1,5 @@
 /* 
-*/
+
 
 const thiccysapi = require('textmaker-lasi'); // Import NPM Package
 
@@ -613,3 +613,4 @@ Asena.addCommand({pattern: 'textcup ?(.*)', fromMe: true,  }, (async (message, m
           } 
     });
 }));
+*/
