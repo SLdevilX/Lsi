@@ -86,7 +86,7 @@ if (config.WORKTYPE == 'private') {
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_VIDEO,MessageType.text);    
 
         try {
-            var arama = await yts({videoId: ytdl.getURLVideoID(match[1])});
+            var arama = await ytdl((match[1]));
         } catch {
             return await message.client.sendMessage(message.jid,Lang.NO_RESULT,MessageType.text);
         }
@@ -94,11 +94,11 @@ if (config.WORKTYPE == 'private') {
         var reply = await message.client.sendMessage(message.jid,Lang.DOWNLOADING_VIDEO,MessageType.text);
 
         var yt = ytdl(arama.videoId, {filter: format => format.container === 'mp4' && ['720p', '480p', '360p', '240p', '144p'].map(() => true)});
-        yt.pipe(fs.createWriteStream('./' + arama.videoId + '.mp4'));
+        yt.pipe(fs.createWriteStream( './' + arama + '.mp4'));
 
         yt.on('end', async () => {
             reply = await message.client.sendMessage(message.jid,Lang.UPLOADING_VIDEO,MessageType.text);
-            await message.client.sendMessage(message.jid,fs.readFileSync('./' + arama.videoId + '.mp4'), MessageType.video, {mimetype: Mimetype.mp4});
+            await message.client.sendMessage(message.jid,fs.readFileSync('./' + arama + '.mp4'), MessageType.video, {mimetype: Mimetype.mp4});
         });
     }));
 
