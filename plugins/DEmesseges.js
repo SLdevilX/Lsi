@@ -6,9 +6,8 @@ const Config = require('../config');
 const DD = "turn off disappering mode"
 const ON = "Sucsessfuly Turned off"
 const UNQ = "wrong command dont type words after command"
-const DDO = "turn off disappering mode"
-const ONO = "Sucsessfuly Turned off"
-const UNQO = "wrong command dont type words after command"
+const DDO = "turn on disappering mode"
+const ONO = "Sucsessfuly Turned on"
 const Language = require('../language');
 const Lang = Language.getString('admin');
 const mut = Language.getString('mute');
@@ -31,7 +30,7 @@ Asena.addCommand({pattern: 'dem ?(.*)', fromMe: true, onlyGroup: true, desc: DDO
             await message.client.sendMessage(message.jid,ONO,MessageType.text);
         }
         else {
-            return await message.client.sendMessage(message.jid, UNQO, MessageType.text);
+            return await message.client.sendMessage(message.jid, UNQ, MessageType.text);
         }
 
 }));
