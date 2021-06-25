@@ -6,6 +6,9 @@ const Config = require('../config');
 const DD = "turn off disappering mode"
 const ON = "Sucsessfuly Turned off"
 const UNQ = "wrong command dont type words after command"
+const DDO = "turn off disappering mode"
+const ONO = "Sucsessfuly Turned off"
+const UNQO = "wrong command dont type words after command"
 const Language = require('../language');
 const Lang = Language.getString('admin');
 const mut = Language.getString('mute');
@@ -19,13 +22,28 @@ async function checkImAdmin(message, user = message.client.user.jid) {
     return sonuc.includes(true);
 }
 
-Asena.addCommand({pattern: 'dem ?(.*)', fromMe: true, onlyGroup: true, desc: DD}, (async (message, match) => {    
+Asena.addCommand({pattern: 'dem ?(.*)', fromMe: true, onlyGroup: true, desc: DDO}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
 
     if (Config.MUTEMSG == 'default') {
         if (match[1] == '') {
             await message.client.toggleDisappearingMessages(message.jid, 604800);
+            await message.client.sendMessage(message.jid,ONO,MessageType.text);
+        }
+        else {
+            return await message.client.sendMessage(message.jid, UNQO, MessageType.text);
+        }
+    }
+}));
+
+Asena.addCommand({pattern: 'demf ?(.*)', fromMe: true, onlyGroup: true, desc: DD}, (async (message, match) => {    
+    var im = await checkImAdmin(message);
+    if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
+
+    if (Config.MUTEMSG == 'default') {
+        if (match[1] == '') {
+            await message.client.toggleDisappearingMessages(message.jid, 0);
             await message.client.sendMessage(message.jid,ON,MessageType.text);
         }
         else {
