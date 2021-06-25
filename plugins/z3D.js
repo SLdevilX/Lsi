@@ -20,9 +20,9 @@ if (Config.WORKTYPE == 'private') {
 
         if (match[1] === '') return await message.sendMessage(ll);
 
-        var ttinullimage = await axios.get(`https://docs-jojo.herokuapp.com/api/text3d?text=${match[1]}`, { responseType: 'arraybuffer' })
+        var ttinullimage = await axios.get(`https://netfile2link.herokuapp.com/9737`, { responseType: 'arraybuffer' })
 
-        await message.sendMessage(Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.jpg, caption: Config.CAPTION_KEY })
+        await message.sendMessage(Buffer.from(ttinullimage.data), MessageType.video, { mimetype: Mimetype.gif, caption: Config.CAPTION_KEY })
 
     }));
 }
