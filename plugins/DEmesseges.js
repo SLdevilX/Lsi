@@ -3,8 +3,8 @@
 const {MessageType, GroupSettingChange} = require('@adiwajshing/baileys');
 const Asena = require('../events');
 const Config = require('../config');
-const DD = "turn on disappering mode"
-const ON = "Sucsessfuly Turned on"
+const DD = "turn off disappering mode"
+const ON = "Sucsessfuly Turned off"
 const UNQ = "wrong command dont type words after command"
 const Language = require('../language');
 const Lang = Language.getString('admin');
@@ -25,9 +25,7 @@ Asena.addCommand({pattern: 'dem ?(.*)', fromMe: true, onlyGroup: true, desc: DD}
 
     if (Config.MUTEMSG == 'default') {
         if (match[1] == '') {
-            await message.client.toggleDisappearingMessages(
-                jid, 
-                WA_DEFAULT_EPHEMERAL );
+            await message.client.toggleDisappearingMessages(jid, 0);
             await message.client.sendMessage(message.jid,ON,MessageType.text);
         }
         else {
