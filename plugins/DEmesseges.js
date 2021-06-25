@@ -3,8 +3,6 @@
 const {MessageType, GroupSettingChange} = require('@adiwajshing/baileys');
 const Asena = require('../events');
 const Config = require('../config');
-const DD = "turn off disappering mode"
-const ON = "Sucsessfuly Turned off"
 const UNQ = "wrong command dont type words after command"
 const DDO = "turn on disappering mode"
 const ONO = "Sucsessfuly Turned on"
