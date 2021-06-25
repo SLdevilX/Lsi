@@ -9,6 +9,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const axios = require('axios');
 const events = require("./events");
 const chalk = require('chalk');
 const config = require('./config');
