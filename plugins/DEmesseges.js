@@ -25,7 +25,7 @@ Asena.addCommand({pattern: 'dem ?(.*)', fromMe: true, onlyGroup: true, desc: DD}
 
     if (Config.MUTEMSG == 'default') {
         if (match[1] == '') {
-            await message.client.toggleDisappearingMessages(jid, 0);
+            await message.client.toggleDisappearingMessages(jid, 604800);
             await message.client.sendMessage(message.jid,ON,MessageType.text);
         }
         else {
