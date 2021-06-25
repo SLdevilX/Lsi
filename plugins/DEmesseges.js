@@ -26,7 +26,6 @@ Asena.addCommand({pattern: 'dem ?(.*)', fromMe: true, onlyGroup: true, desc: DDO
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
 
-    if (Config.MUTEMSG == 'default') {
         if (match[1] == '') {
             await message.client.toggleDisappearingMessages(message.jid, 604800);
             await message.client.sendMessage(message.jid,ONO,MessageType.text);
@@ -34,14 +33,13 @@ Asena.addCommand({pattern: 'dem ?(.*)', fromMe: true, onlyGroup: true, desc: DDO
         else {
             return await message.client.sendMessage(message.jid, UNQO, MessageType.text);
         }
-    }
+
 }));
 
 Asena.addCommand({pattern: 'demf ?(.*)', fromMe: true, onlyGroup: true, desc: DD}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
 
-    if (Config.MUTEMSG == 'default') {
         if (match[1] == '') {
             await message.client.toggleDisappearingMessages(message.jid, 0);
             await message.client.sendMessage(message.jid,ON,MessageType.text);
@@ -49,7 +47,7 @@ Asena.addCommand({pattern: 'demf ?(.*)', fromMe: true, onlyGroup: true, desc: DD
         else {
             return await message.client.sendMessage(message.jid, UNQ, MessageType.text);
         }
-    }
+
 }));
 module.exports = {
     checkImAdmin: checkImAdmin
