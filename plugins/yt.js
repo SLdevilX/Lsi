@@ -1,10 +1,4 @@
-/* # Exclusively from danuma project 
-# Do not use this fore any commercial thing
-# If you abuse thais bot we wil kick you from bot 
-# Do not edit (Respect to the Devaoloper) 
-# All rights reserved ©Lasiya @lasiya99X t.me/lasiya99X
-# Get more about devaoloper https://lasiya.ml
-/*
+
 
 const Asena = require('../events');
 const {MessageType,Mimetype} = require('@adiwajshing/baileys');
@@ -48,7 +42,7 @@ var gis = require('g-i-s');
 
 if (config.WORKTYPE == 'private') {
 
-    Asena.addCommand({pattern: 'song ?(.*)', fromMe: true, desc: Lang.SONG_DESC}, (async (message, match) => { 
+        Asena.addCommand({pattern: 'song ?(.*)', fromMe: true, desc: Lang.SONG_DESC}, (async (message, match) => { 
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_TEXT_SONG,MessageType.text);    
         let arama = await yts(match[1]);
@@ -60,7 +54,7 @@ if (config.WORKTYPE == 'private') {
         let stream = ytdl(arama[0].videoId, {
             quality: 'highestaudio',
         });
-
+    
         got.stream(arama[0].image).pipe(fs.createWriteStream(title + '.jpg'));
         ffmpeg(stream)
             .audioBitrate(320)
