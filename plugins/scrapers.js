@@ -89,35 +89,6 @@ if (config.WORKTYPE == 'private') {
         }
     }));
 
-    if (config.LANG == 'EN' || config.LANG == 'SI') {
-
-        Asena.addCommand({pattern: 'tts (.*)', fromMe: true, desc: Lang.TTS_DESC}, (async (message, match) => {
-
-            if(match[1] === undefined || match[1] == "")
-                return;
-    
-            let 
-                LANG = 'en',
-                ttsMessage = match[1],
-                SPEED = 1.0
-
-            if(langMatch = match[1].match("\\{([a-z]{2})\\}")) {
-                LANG = langMatch[1]
-                ttsMessage = ttsMessage.replace(langMatch[0], "")
-            } 
-            if(speedMatch = match[1].match("\\{([0].[0-9]+)\\}")) {
-                SPEED = parseFloat(speedMatch[1])
-                ttsMessage = ttsMessage.replace(speedMatch[0], "")
-            }
-    
-            var buffer = await googleTTS.synthesize({
-                text: ttsMessage,
-                voice: LANG
-            });
-            await message.client.sendMessage(message.jid,buffer, MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: true});
-        }));
-    }
-    else {
         Asena.addCommand({pattern: 'tts (.*)', fromMe: true, desc: Lang.TTS_DESC}, (async (message, match) => {
 
             if(match[1] === undefined || match[1] == "")
@@ -143,7 +114,7 @@ if (config.WORKTYPE == 'private') {
             });
             await message.client.sendMessage(message.jid,buffer, MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: true});
         }));
-    }
+    
     Asena.addCommand({pattern: 'yt ?(.*)', fromMe: true, desc: Lang.YT_DESC}, (async (message, match) => { 
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text);    
@@ -216,7 +187,7 @@ if (config.WORKTYPE == 'private') {
                 //const resp = await fetch("https://coronavirus-19-api.herokuapp.com/all").then(r => r.json());
                 const respo = await got("https://coronavirus-19-api.herokuapp.com/all").then(async ok => {
                     const resp = JSON.parse(ok.body);
-                    await message.reply(`🌍 *World-Wide Results:*\n🌐 *Total Cases:* ${resp.cases}\n☠️ *Total Deaths:* ${resp.deaths}\n⚕️ *Total Recovered:* ${resp.recovered}`);
+                    await message.reply(`🌍 *World-Wide Results:*\n🌐 *Total Cases:* ${resp.cases}\n☠️ *Total Deaths:* ${resp.deaths}\n   *Total Recovered:* ${resp.recovered}`);
  
                 });
 
@@ -554,7 +525,7 @@ else if (config.WORKTYPE == 'public') {
                 //const resp = await fetch("https://coronavirus-19-api.herokuapp.com/all").then(r => r.json());
                 const respo = await got("https://coronavirus-19-api.herokuapp.com/all").then(async ok => {
                     const resp = JSON.parse(ok.body);
-                    await message.reply(`🌍 *World-Wide Results:*\n🌐 *Total Cases:* ${resp.cases}\n☠️ *Total Deaths:* ${resp.deaths}\n⚕️ *Total Recovered:* ${resp.recovered}`);
+                    await message.reply(`🌍 *World-Wide Results:*\n🌐 *Total Cases:* ${resp.cases}\n☠️ *Total Deaths:* ${resp.deaths}\n   *Total Recovered:* ${resp.recovered}`);
  
                 });
 
