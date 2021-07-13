@@ -6,7 +6,7 @@
 # Get more about devaoloper https://lasiya.ml
 */
 
-const Asena = require('../events');
+const Xlt = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const speedTest = require('@lh2020/speedtest-net');
 const TinyURL = require('tinyurl');
@@ -30,7 +30,7 @@ function speedText(speed) {
     return `${bits.toFixed(places[unit])} ${units[unit]}bps`;
 }
 
-Asena.addCommand({pattern: 'speedtest', fromMe: true, desc: Lang.SPEEDTEST_DESC}, (async (message, match) => {
+Xlt.addCommand({pattern: 'speedtest', fromMe: true, desc: Lang.SPEEDTEST_DESC}, (async (message, match) => {
     var msg = await message.reply(Lang.SPEEDTESTING);
     var st = await speedTest({acceptLicense: true, acceptGdpr: true});
     
@@ -44,7 +44,7 @@ Asena.addCommand({pattern: 'speedtest', fromMe: true, desc: Lang.SPEEDTEST_DESC}
     await msg.delete();
 }));
 
-Asena.addCommand({pattern: 'ping', fromMe: true, deleteCommand: false, desc: Lang.PING_DESC}, (async (message, match) => {
+Xlt.addCommand({pattern: 'ping', fromMe: true, deleteCommand: false, desc: Lang.PING_DESC}, (async (message, match) => {
   var start = new Date().getTime();
   await message.sendMessage('```Ping!```');
   var end = new Date().getTime();
@@ -55,7 +55,7 @@ Asena.addCommand({pattern: 'ping', fromMe: true, deleteCommand: false, desc: Lan
 
 if (Config.WORKTYPE == 'private') {
 
-    Asena.addCommand({pattern: 'short ?(.*)', fromMe: true, desc: Lang.URL}, (async (message, match) => {
+    Xlt.addCommand({pattern: 'short ?(.*)', fromMe: true, desc: Lang.URL}, (async (message, match) => {
 
         if (match[1] === '') return await message.client.sendMessage(message.jid, SLang.LİNK, MessageType.text);
 
@@ -69,7 +69,7 @@ if (Config.WORKTYPE == 'private') {
 }
 else if (Config.WORKTYPE == 'public') {
 
-    Asena.addCommand({pattern: 'short ?(.*)', fromMe: false, desc: Lang.URL}, (async (message, match) => {
+    Xlt.addCommand({pattern: 'short ?(.*)', fromMe: false, desc: Lang.URL}, (async (message, match) => {
 
         if (match[1] === '') return await message.client.sendMessage(message.jid, SLang.LİNK, MessageType.text);
 

@@ -8,7 +8,7 @@
 
 const simpleGit = require('simple-git');
 const git = simpleGit();
-const Asena = require('../events');
+const Xlt = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const Config = require('../config');
 const exec = require('child_process').exec;
@@ -20,7 +20,7 @@ const Language = require('../language');
 const Lang = Language.getString('updater');
 
 
-Asena.addCommand({pattern: 'up$', fromMe: true, desc: Lang.UPDATER_DESC}, (async (message, match) => {
+Xlt.addCommand({pattern: 'up$', fromMe: true, desc: Lang.UPDATER_DESC}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {
@@ -43,7 +43,7 @@ Asena.addCommand({pattern: 'up$', fromMe: true, desc: Lang.UPDATER_DESC}, (async
     }
 }));
 
-Asena.addCommand({pattern: 'up now$', fromMe: true, desc: Lang.UPDATE_NOW_DESC}, (async (message, match) => {
+Xlt.addCommand({pattern: 'up now$', fromMe: true, desc: Lang.UPDATE_NOW_DESC}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {

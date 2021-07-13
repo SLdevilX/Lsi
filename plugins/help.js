@@ -6,7 +6,7 @@
 # Get more about devaoloper https://lasiya.ml
 */
 
-const Asena = require('../events');
+const Xlt = require('../events');
 const {MessageType, MessageOptions} = require('@adiwajshing/baileys');
 const Config = require('../config');
 
@@ -34,7 +34,7 @@ const sudoEN = "SUDO, ඔබේ බොට් එක ඔබ තෝරාගත්
 
 if (Config.LANG == 'EN') {
     
-    Asena.addCommand({pattern: 'help ?(.*)', fromMe: true, desc: h_Des}, (async (message, match) => {
+    Xlt.addCommand({pattern: 'help ?(.*)', fromMe: true, desc: h_Des}, (async (message, match) => {
 
         if (match[1] === '') {
             return await message.client.sendMessage(

@@ -1,4 +1,4 @@
-const Asena = require('../events');
+const Xlt = require('../events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const axios = require('axios');
 const Config = require('../config');
@@ -6,7 +6,7 @@ const Config = require('../config');
 
 if (Config.WORKTYPE == 'private') {
 	
-Asena.addCommand({pattern: 'alive', fromMe: true, deleteCommand: false,}, (async (message, match) => {
+Xlt.addCommand({pattern: 'alive', fromMe: true, deleteCommand: false,}, (async (message, match) => {
 
 	        var r_text = new Array ();
 
@@ -37,7 +37,7 @@ await message.client.sendMessage(message.jid, Buffer.from(respoimage.data), Mess
 }
 else if (Config.WORKTYPE == 'public') {
 	
-	Asena.addCommand({pattern: 'alive', fromMe: false, deleteCommand: false,}, (async (message, match) => {
+	Xlt.addCommand({pattern: 'alive', fromMe: false, deleteCommand: false,}, (async (message, match) => {
 
 	        var r_text = new Array ();
 

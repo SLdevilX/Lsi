@@ -9,7 +9,7 @@
     "stack": "container",
     "env": {
         "ASENA_SESSION": {
-            "description": "Qr.Js ile oluşturduğunuz özel session kodu. Type here yours Asena Session.",
+            "description": "Qr.Js ile oluşturduğunuz özel session kodu. Type here yours Xlt Session.",
             "required": true
         },
         "SUDO": {
@@ -56,7 +56,7 @@
             "value": "default"
         },
         "WORK_TYPE": {
-            "description": "WhatsAsena Working Type. If you use “public”, everyone can use the bot. Else if you use “private”, only you can use your bot.",
+            "description": " Working Type. If you use “public”, everyone can use the bot. Else if you use “private”, only you can use your bot.",
             "required": true,
             "value": "private"
         },

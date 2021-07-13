@@ -7,7 +7,7 @@
 # Get more about devaoloper https://lasiya.ml
 */
 
-const Asena = require('../events');
+const Xlt = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const got = require('got');
 const Config = require('../config');
@@ -17,7 +17,7 @@ const Lang = Language.getString('nekobin');
 
 if (Config.WORKTYPE == 'private') {
 
-    Asena.addCommand({pattern: 'neko', fromMe: true, desc: Lang.NEKO_DESC}, (async (message, match) => {
+    Xlt.addCommand({pattern: 'neko', fromMe: true, desc: Lang.NEKO_DESC}, (async (message, match) => {
 
         if (!message.reply_message) return await message.sendMessage(Lang.NEED_REPLY);
         if (!message.reply_message.text) return await message.sendMessage(Lang.MUST_TEXT);
@@ -36,7 +36,7 @@ if (Config.WORKTYPE == 'private') {
 }
 else if (Config.WORKTYPE == 'public') {
 
-    Asena.addCommand({pattern: 'neko', fromMe: false, desc: Lang.NEKO_DESC}, (async (message, match) => {
+    Xlt.addCommand({pattern: 'neko', fromMe: false, desc: Lang.NEKO_DESC}, (async (message, match) => {
 
         if (!message.reply_message) return await message.sendMessage(Lang.NEED_REPLY);
         if (!message.reply_message.text) return await message.sendMessage(Lang.MUST_TEXT);

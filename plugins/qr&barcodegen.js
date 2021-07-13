@@ -6,7 +6,7 @@
 # Get more about devaoloper https://lasiya.ml
 */
 
-const Asena = require('../events');
+const Xlt = require('../events');
 const { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
 const fs = require('fs');
 const axios = require('axios');
@@ -16,7 +16,7 @@ const ll = "send with some text or link\n ලින්කුවක් හෝ ව
 
 if (Config.WORKTYPE == 'private') {
 
-    Asena.addCommand({ pattern: 'qr ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+    Xlt.addCommand({ pattern: 'qr ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(ll);
 
@@ -26,7 +26,7 @@ if (Config.WORKTYPE == 'private') {
 
     }));
     
-     Asena.addCommand({ pattern: 'br ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Xlt.addCommand({ pattern: 'br ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(ll);
 
@@ -40,7 +40,7 @@ if (Config.WORKTYPE == 'private') {
 
 else if (Config.WORKTYPE == 'public') {
 
-    Asena.addCommand({ pattern: 'qr ?(.*)', fromMe: false,deleteCommand: false, dontAddCommandList: true}, (async (message, match) => {
+    Xlt.addCommand({ pattern: 'qr ?(.*)', fromMe: false,deleteCommand: false, dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(ll);
 
@@ -49,7 +49,7 @@ else if (Config.WORKTYPE == 'public') {
         await message.sendMessage(Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.jpg, caption: '🚀Made by X-Troid ☄️' })
 
     }));
-    Asena.addCommand({ pattern: 'br ?(.*)', fromMe: false,deleteCommand: false, dontAddCommandList: true}, (async (message, match) => {
+    Xlt.addCommand({ pattern: 'br ?(.*)', fromMe: false,deleteCommand: false, dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(ll);
 

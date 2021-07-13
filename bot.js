@@ -8,19 +8,22 @@
 */
 
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
-const axios = require('axios');
 const events = require("./events");
 const chalk = require('chalk');
 const config = require('./config');
+const axios = require('axios');
 const Heroku = require('heroku-client');
 const {WAConnection, MessageOptions, MessageType, Mimetype, Presence} = require('@adiwajshing/baileys');
-const {Message, StringSession, Image, Video} = require('./whatsasena/');
+const {Message, StringSession, Image, Video} = require('./Xlite/');
 const { DataTypes } = require('sequelize');
 const { GreetingsDB, getMessage } = require("./plugins/sql/greetings");
 const got = require('got');
 const simpleGit = require('simple-git');
 const git = simpleGit();
+const crypto = require('crypto');
+const nw = '```Blacklist Defected!```'
 
 const heroku = new Heroku({
     token: config.HEROKU.API_KEY
@@ -32,7 +35,7 @@ const Language = require('./language');
 const Lang = Language.getString('updater');
 
 // Sql
-const WhatsAsenaDB = config.DATABASE.define('WhatsAsenaDuplicated', {
+const XDB = config.DATABASE.define('WhatsAsenaDuplicated', {
     info: {
       type: DataTypes.STRING,
       allowNull: false
@@ -78,7 +81,7 @@ Array.prototype.remove = function() {
 
 async function whatsAsena () {
     await config.DATABASE.sync();
-    var StrSes_Db = await WhatsAsenaDB.findAll({
+    var StrSes_Db = await XDB.findAll({
         where: {
           info: 'StringSession'
         }
@@ -105,14 +108,14 @@ async function whatsAsena () {
 
         const authInfo = conn.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
-            await WhatsAsenaDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
+            await XDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
     })    
 
     conn.on('connecting', async () => {
-        console.log(`${chalk.green.bold('Whats')}${chalk.blue.bold('Asena')}
+        console.log(`${chalk.green.bold('Whats')}${chalk.blue.bold('Xlt')}
 ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
 
 ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);

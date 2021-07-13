@@ -5,7 +5,7 @@
 # All rights reserved ©Lasiya @lasiya99X t.me/lasiya99X
 # Get more about devaoloper https://lasiya.ml
 */
-const Asena = require('../events');
+const Xlt = require('../events');
 const Config = require('../config');
 const {MessageType} = require('@adiwajshing/baileys');
 const tesseract = require("node-tesseract-ocr")
@@ -15,7 +15,7 @@ const Lang = Language.getString('ocr');
 
 if (Config.WORKTYPE == 'private') {
 
-    Asena.addCommand({pattern: 'ocr ?(.*)', fromMe: true, desc: Lang.OCR_DESC}, (async (message, match) => { 
+    Xlt.addCommand({pattern: 'ocr ?(.*)', fromMe: true, desc: Lang.OCR_DESC}, (async (message, match) => { 
 
         if (message.reply_message === false) return await message.sendMessage(Lang.NEED_REPLY);    
 	var info = await message.reply(Lang.DOWNLOADING);
@@ -52,7 +52,7 @@ if (Config.WORKTYPE == 'private') {
 }
 else if (Config.WORKTYPE == 'public') {
 
-    Asena.addCommand({pattern: 'ocr ?(.*)', fromMe: false, desc: Lang.OCR_DESC}, (async (message, match) => { 
+    Xlt.addCommand({pattern: 'ocr ?(.*)', fromMe: false, desc: Lang.OCR_DESC}, (async (message, match) => { 
 
         if (message.reply_message === false) return await message.sendMessage(Lang.NEED_REPLY);    
 	var info = await message.reply(Lang.DOWNLOADING);
@@ -86,7 +86,7 @@ else if (Config.WORKTYPE == 'public') {
 
         return await message.reply(Lang.RESULT.format(dil[2], result));
     }));
-    Asena.addCommand({pattern: 'ocr ?(.*)', fromMe: true, desc: Lang.OCR_DESC, dontAddCommandList: true}, (async (message, match) => { 
+    Xlt.addCommand({pattern: 'ocr ?(.*)', fromMe: true, desc: Lang.OCR_DESC, dontAddCommandList: true}, (async (message, match) => { 
 
         if (message.reply_message === false) return await message.sendMessage(Lang.NEED_REPLY);    
 	var info = await message.reply(Lang.DOWNLOADING);

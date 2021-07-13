@@ -6,13 +6,13 @@
 # Get more about devaoloper https://lasiya.ml
 */
 
-const Asena = require('../events');
+const Xlt = require('../events');
 const {MessageType, MessageOptions, Mimetype, Presence} = require('@adiwajshing/baileys');
 
 const Language = require('../language');
 const Lang = Language.getString('scam');
 
-Asena.addCommand({pattern: 'scam ?(.*)', fromMe: true, desc: Lang.SCAM_DESC}, (async (message, match) => {
+Xlt.addCommand({pattern: 'scam ?(.*)', fromMe: true, desc: Lang.SCAM_DESC}, (async (message, match) => {
 
     if (match[1] === '') {
 

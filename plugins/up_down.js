@@ -6,7 +6,7 @@
 # Get more about devaoloper https://lasiya.ml
 */
 
-const Asena = require('../events');
+const Xlt = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const got = require('got');
 const fs = require('fs');
@@ -19,7 +19,7 @@ const LOADING = "Getting video info"
 const NOT_FOUNDFB = "Cann't fetch video"
 const Config = require('../config');
 
-Asena.addCommand({ pattern: 'instad ?(.*)', fromMe: true, desc: IG_DESC}, async (message, match) => {
+Xlt.addCommand({ pattern: 'instad ?(.*)', fromMe: true, desc: IG_DESC}, async (message, match) => {
 
     const userName = match[1]
 
@@ -57,7 +57,7 @@ Asena.addCommand({ pattern: 'instad ?(.*)', fromMe: true, desc: IG_DESC}, async 
 
 
 
-Asena.addCommand({ pattern: 'fb ?(.*)', fromMe: false, desc: FBDESC }, async (message, match) => {
+Xlt.addCommand({ pattern: 'fb ?(.*)', fromMe: false, desc: FBDESC }, async (message, match) => {
 
     const userName = match[1]
 
